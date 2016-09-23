@@ -1,0 +1,48 @@
+<!doctype html>
+<html data-framework="vue">
+	<head>
+		<meta charset="utf-8">
+		<title>Notes</title>
+		<link rel="stylesheet" href="style.css" />
+		<style>
+			[v-cloak] { display: none; }
+		</style>
+	</head>
+	<body>
+		<section class="noteapp">
+			<header class="header">
+				<h1>Notes</h1>
+				<input class="new-note" autofocus autocomplete="off" placeholder="What needs to be done?" v-model="newNote" @keyup.enter="addNote">
+			</header>
+			<section class="main" v-show="notes.length" v-cloak>
+				<ul class="note-list">
+					<li class="note sticky" v-for="(index, note) in notes" :class="{completed: note.completed, editing: note == editedNote}" v-note-drag-drop="{note: note, index: index}" :style="note.pos">
+						<div class="flip">
+							<div class="front">
+								<button class="destroy" @click="removeNote(note)">×</button>
+								<label @click="editNote(note)" title="click to edit">{{note.title}}</label>
+							</div>
+							<div class="back">
+								<div class="view">
+									<input class="edit" type="text" v-model="note.title" v-note-focus="note == editedNote" @keyup.enter="doneEdit(note)" @keyup.esc="cancelEdit(note)">
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</section>
+			<footer class="footer" v-show="notes.length" v-cloak>
+				<span class="note-count">
+					<strong v-text="remaining"></strong> {{remaining | pluralize 'note'}} left
+				</span>
+			</footer>
+		</section>
+		<footer class="info">
+		</footer>
+		<script src="node_modules/director/build/director.js"></script>
+		<script src="node_modules/vue/dist/vue.js"></script>
+		<script src="js/store.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/routes.js"></script>
+	</body>
+</html>

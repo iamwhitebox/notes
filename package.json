@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "dependencies": {
+    "director": "^1.2.0",
+    "vue": "^1.0.1"
+  }
+}

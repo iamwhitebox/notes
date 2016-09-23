@@ -1,0 +1,149 @@
+body {
+	position: relative;
+}
+input[type="text"] {
+	background: transparent;
+	border: none;
+	outline: none;
+	padding: 1em;
+	font-size: 5em;
+}
+label {
+	cursor: pointer;
+	padding: 5px 10px;
+	display: inline-block;
+}
+ul {
+	list-style-type: none;
+	margin: 1em 0;
+	padding: 0;
+}
+li.note {
+    float: left;
+    margin: 0 1em 1em 0;
+    min-height: 10em;
+    min-width: 10em;
+}
+li.note .view {
+	display: none;
+}
+li.note.editing .view {
+	display: block;
+}
+li.note .destroy {
+	font-weight: bold;
+	background: none;
+    border-radius: 0;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    float: right;
+}
+
+.sticky {
+	-webkit-perspective: 1000;
+	-moz-perspective: 1000;
+	-o-perspective: 1000;
+	perspective: 1000;
+
+	position: absolute;
+
+	-webkit-transition: height 0.6s, width 0.6s, top 0.6s, left 0.6s;
+	-moz-transition: height 0.6s, width 0.6s, top 0.6s, left 0.6s;
+	-o-transition: height 0.6s, width 0.6s, top 0.6s, left 0.6s;
+	transition: height 0.6s, width 0.6s, top 0.6s, left 0.6s;
+}
+
+.sticky.dragging {
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+
+.sticky.editing {
+    position: fixed;
+    top: 0!important;
+    left: 0!important;
+    bottom: 0!important;
+    right: 0!important;
+    margin: 1em;
+    z-index: 9;
+}
+.sticky.editing .front {
+	z-index: 2;
+}
+.sticky.editing .back {
+	z-index: 3;
+}
+
+.sticky.editing .flip {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+
+	height: 100%;
+}
+
+.sticky, .front, .back {
+    min-height: 10em;
+    min-width: 10em;
+}
+
+.flip {
+	-webkit-transition: all 0.6s;
+	-webkit-transform-style: preserve-3d;
+	-moz-transition: all 0.6s;
+	-moz-transform-style: preserve-3d;
+    -o-transition: all 0.6s;
+	-o-transform-style: preserve-3d;
+	transition: all 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.front, .back {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+  	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.front {
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+	background: rgb(254,243,161);
+	z-index: 3;
+}
+
+.back {
+	background: rgb(175,244,254);
+
+	height: 100%;
+	width: 100%;
+
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+
+	z-index: 2;
+}
+
+.sticky {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.sticky:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+
+    z-index: 9;
+}
