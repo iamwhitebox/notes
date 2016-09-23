@@ -24,7 +24,7 @@
 							</div>
 							<div class="back">
 								<div class="view">
-									<input class="edit" type="text" v-model="note.title" v-note-focus="note == editedNote" @keyup.enter="doneEdit(note)" @keyup.esc="cancelEdit(note)">
+									<textarea class="edit" type="text" v-model="note.title" v-note-focus="note == editedNote" @keyup.enter="doneEdit(note)" @keyup.esc="cancelEdit(note)"></textarea>
 								</div>
 							</div>
 						</div>

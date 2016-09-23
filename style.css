@@ -1,12 +1,15 @@
 body {
 	position: relative;
 }
-input[type="text"] {
+input[type="text"], textarea {
 	background: transparent;
-	border: none;
-	outline: none;
-	padding: 1em;
-	font-size: 5em;
+    border: none;
+    outline: none;
+    padding: 20px;
+    font-size: 5em;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
 }
 label {
 	cursor: pointer;
@@ -29,6 +32,7 @@ li.note .view {
 }
 li.note.editing .view {
 	display: block;
+	height: 100%;
 }
 li.note .destroy {
 	font-weight: bold;
