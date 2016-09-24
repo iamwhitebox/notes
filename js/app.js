@@ -89,7 +89,6 @@
 			},
 
 			'note-drag-drop': function (value) {
-				var self = this;
 			    var el = this.el;
 			    var mover = false, x, y, posx, posy, first = true;
 			    var isSticky = function (event) {
