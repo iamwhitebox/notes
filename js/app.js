@@ -63,10 +63,6 @@
 				this.editing = false;
 				note.title = note.title.trim();
 
-				Vue.nextTick(function () {
-					console.log(JSON.parse(JSON.stringify(note)).pos);
-				});
-
 				if (!note.title) {
 					this.removeNote(note);
 				}
